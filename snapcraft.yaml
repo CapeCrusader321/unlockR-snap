@@ -60,6 +60,11 @@ parts:
  #sed -e 's|Icon=com.github.jkotra.unlockr|Icon=${SNAP}/usr/share/icons/hicolor/scalable/apps/com.github.jkotra.unlockr.svg|' -i data/com.github.jkotra.unlockr.desktop.in
     build-snaps:
       - cmake
+    build-packages:
+      - libadwaita-1-dev
+      - libadwaita-1-0
+      - libgtk-4-dev
+      - libgtk-4-1
     override-build: |
       craftctl default
       # WORKAROUND: Use python from search path, the path detected by meson doesn't exist when running the Snap
