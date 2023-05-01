@@ -34,7 +34,6 @@ apps:
 parts:
   qpdf:
     source: https://github.com/qpdf/qpdf/releases/download/v11.3.0/qpdf-11.3.0.tar.gz
-    source-checksum: 195a02bdd0e02a668cb03cafab14ddff
     plugin: cmake
     cmake-parameters:
       - -DCMAKE_INSTALL_PREFIX=/usr
