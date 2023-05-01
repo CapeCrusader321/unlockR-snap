@@ -32,8 +32,15 @@ apps:
     desktop: usr/share/applications/com.github.jkotra.unlockr.desktop
     
 parts:
+  qpdf:
+    source: https://github.com/qpdf/qpdf/releases/download/v11.3.0/qpdf-11.3.0.tar.gz
+    plugin: cmake
+    build-snaps:
+      - cmake
+      
   unlockr:
     source: https://github.com/jkotra/unlockr.git
+    after: [qpdf]
     plugin: meson
     parse-info: [usr/share/metainfo/com.github.jkotra.unlockr.metainfo.xml]
     meson-parameters:
@@ -44,10 +51,6 @@ parts:
  #sed -e 's|Icon=com.github.jkotra.unlockr|Icon=${SNAP}/usr/share/icons/hicolor/scalable/apps/com.github.jkotra.unlockr.svg|' -i data/com.github.jkotra.unlockr.desktop.in
     build-snaps:
       - cmake
-    build-packages:
-      - libqpdf-dev
-      - qpdf
-      - libqpdf28
     override-build: |
       craftctl default
       # WORKAROUND: Use python from search path, the path detected by meson doesn't exist when running the Snap
