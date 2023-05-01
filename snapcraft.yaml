@@ -38,15 +38,17 @@ parts:
     parse-info: [usr/share/metainfo/com.github.jkotra.unlockr.metainfo.xml]
     meson-parameters:
       - -Dprefix=/usr
-    stage-packages:
-      - qpdf
     override-pull: |
       craftctl default
       craftctl set version=$(git describe --tags --abbrev=0)
  #sed -e 's|Icon=com.github.jkotra.unlockr|Icon=${SNAP}/usr/share/icons/hicolor/scalable/apps/com.github.jkotra.unlockr.svg|' -i data/com.github.jkotra.unlockr.desktop.in
+    build-snaps:
+      - cmake
+    build-packages:
+      - libqpdf-dev
+      - libqpdf28
     override-build: |
       craftctl default
       # WORKAROUND: Use python from search path, the path detected by meson doesn't exist when running the Snap
       sed -e '1c#!/usr/bin/env python3' -i ${CRAFT_PART_INSTALL}/snap/unlockr/current/usr/bin/unlockr
-    
     
