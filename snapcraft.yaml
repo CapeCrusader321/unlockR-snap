@@ -34,10 +34,20 @@ apps:
 parts:
   qpdf:
     source: https://github.com/qpdf/qpdf/releases/download/v11.3.0/qpdf-11.3.0.tar.gz
+    source-checksum: 195a02bdd0e02a668cb03cafab14ddff
     plugin: cmake
+    cmake-parameters:
+      - -DCMAKE_INSTALL_PREFIX=/usr
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_STATIC_LIBS=OFF 
+      - -DCMAKE_INSTALL_DOCDIR=/usr/share/doc/qpdf-11.3.0
     build-snaps:
       - cmake
-      
+    build-packages:
+      - libjpeg-turbo8-dev
+      - libjpeg-turbo8
+    
+    
   unlockr:
     source: https://github.com/jkotra/unlockr.git
     after: [qpdf]
