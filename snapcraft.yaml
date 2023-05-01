@@ -38,7 +38,7 @@ parts:
     cmake-parameters:
       - -DCMAKE_INSTALL_PREFIX=/usr
       - -DCMAKE_BUILD_TYPE=Release
-      - -DBUILD_STATIC_LIBS=OFF 
+      #- -DBUILD_STATIC_LIBS=OFF 
       - -DCMAKE_INSTALL_DOCDIR=/usr/share/doc/qpdf-11.3.0
     build-snaps:
       - cmake
