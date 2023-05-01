@@ -38,7 +38,7 @@ parts:
     cmake-parameters:
       - -DCMAKE_INSTALL_PREFIX=/usr
       - -DCMAKE_BUILD_TYPE=Release
-      #- -DBUILD_STATIC_LIBS=OFF 
+      - -DBUILD_STATIC_LIBS=OFF 
       - -DCMAKE_INSTALL_DOCDIR=/usr/share/doc/qpdf-11.3.0
     build-snaps:
       - cmake
@@ -60,8 +60,8 @@ parts:
  #sed -e 's|Icon=com.github.jkotra.unlockr|Icon=${SNAP}/usr/share/icons/hicolor/scalable/apps/com.github.jkotra.unlockr.svg|' -i data/com.github.jkotra.unlockr.desktop.in
     build-snaps:
       - cmake
-    #override-build: |
-      #craftctl default
+    override-build: |
+      craftctl default
       # WORKAROUND: Use python from search path, the path detected by meson doesn't exist when running the Snap
-      #sed -e '1c#!/usr/bin/env python3' -i ${CRAFT_PART_INSTALL}/snap/unlockr/current/usr/bin/unlockr
+      sed -e '1c#!/usr/bin/env python3' -i ${CRAFT_PART_INSTALL}/snap/unlockr/current/usr/bin/unlockr
     
