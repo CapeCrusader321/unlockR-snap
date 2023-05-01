@@ -46,6 +46,7 @@ parts:
       - cmake
     build-packages:
       - libqpdf-dev
+      - qpdf
       - libqpdf28
     override-build: |
       craftctl default
