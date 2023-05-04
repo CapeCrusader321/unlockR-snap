@@ -13,10 +13,6 @@ slots:
     bus: session
     name: com.github.jkotra.unlockr
 
-environment:
-  # WORKAROUND: Add python modules in Snap to search path
-  PYTHONPATH: ${SNAP}/usr/lib/python3/dist-packages:$PYTHONPATH
-
 apps:
   unlockr:
     command: usr/bin/unlockr
